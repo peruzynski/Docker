@@ -1,1 +1,29 @@
 # Docker
+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                                                              Specyfikacja wymagań Docerized Spotify 9000                                                                                              |
++=====+=========================================+===================================================================================================================================================+================+==================+
+| Id. |                  Nazwa                  |                                                                        Opis                                                                       |    Priorytet   |     Kategoria    |
++-----+-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
+| 1.  | Wyszukiwanie utworów                    | Użytkownik może wprowadzić zapytanie dotyczące utworu, który chce znaleźć na Spotify.                                                             | 1 (wymagane)   | Funkcjonalne     |
++-----+-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
+| 1.  | Obsługa błędów                          | System powinien obsługiwać błędy związane z brakiem zapytania, błędnym zapytaniem lub błędem w komunikacji z API Spotify.                         | 1 (wymagane)   | Funkcjonalne     |
++-----+-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
+| 1.  | Interfejs graficzny                     | Aplikacja powinna posiadać prosty i intuicyjny interfejs umożliwiający użytkownikowi łatwe korzystanie z funkcjonalności wyszukiwania utworów.    | 1 (wymagane)   | Funkcjonalne     |
++-----+-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
+| 1.  | Autoryzacja Spotify API                 | Aplikacja powinna korzystać z autoryzacji przy wykorzystaniu klucza dostępu do API Spotify, zapewniając bezpieczeństwo komunikacji.               | 1 (wymagane)   | Funkcjonalne     |
++-----+-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
+| 1.  | Działanie aplikacji w kontenerze Docker | Projekt musi być wykonany w sposób umożliwiający uruchomienie aplikacji w kontenerze Docker, zapewniając przenośność i łatwość wdrożenia.         | 1 (wymagane)   | Funkcjonalne     |
++-----+-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
+| 1.  | Informacje o utworach                   | Po wykonaniu zapytania, użytkownik powinien otrzymać informacje o znalezionych utworach, takie jak tytuł, wykonawca, album i link do odtworzenia. | 1 (wymagane)   | Funkcjonalne     |
++-----+-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
+| 1.  | Obługa różnych rodzajów wyszukiwania    | Aplikacja powinna obsługiwać różne rodzaje wyszukiwań, takie jak: tytuł utworu, nazwa wykonawcy, fragment tekstu, etc.                            | 2 (przydatne)  | Funkcjonalne     |
++-----+-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
+| 1.  | Personalizacja wyników wyszukiwania     | żytkownik powinien mieć możliwość personalizacji wyników wyszukiwania, takich jak sortowanie, filtrowanie czy dodatkowe informacje.               | 2 (przydatne)  | Funkcjonalne     |
++-----+-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
+| 1.  | Testy jednostkowe                       | Projekt powinien zawierać testy jednostkowe, zapewniające sprawdzenie poprawności działania poszczególnych funkcjonalności.                       | 3 (opcjonalne) | Funkcjonalne     |
++-----+-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
+| 1.  | Responsywność                           | Interfejs aplikacji powinien być responsywny, umożliwiając korzystanie z niej na różnych urządzeniach i rozdzielczościach.                        | 2 (przydatne)  | Pozafunkcjonalne |
++-----+-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------------+
