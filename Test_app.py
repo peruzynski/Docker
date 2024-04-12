@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch, MagicMock
-from app.py import app, get_spotify_api_key
+from app import app, get_spotify_api_key
 
 class TestFlaskApp(unittest.TestCase):
 
@@ -11,7 +11,7 @@ class TestFlaskApp(unittest.TestCase):
     def tearDown(self):
         pass
 
-    @patch('app.py.requests.post')
+    @patch('app.requests.post')
     def test_get_spotify_api_key_success(self, mock_post):
         mock_post.return_value.status_code = 200
         mock_post.return_value.json.return_value = {'access_token': 'dummy_token'}
@@ -20,7 +20,7 @@ class TestFlaskApp(unittest.TestCase):
         self.assertIsNotNone(app.SPOTIFY_API_KEY)
         self.assertEqual(app.SPOTIFY_API_KEY, 'dummy_token')
 
-    @patch('app.py.requests.post')
+    @patch('app.requests.post')
     def test_get_spotify_api_key_failure(self, mock_post):
         mock_post.return_value.status_code = 400
         
@@ -31,7 +31,7 @@ class TestFlaskApp(unittest.TestCase):
         response = self.app.get('/')
         self.assertEqual(response.status_code, 200)
 
-    @patch('app.py.requests.get')
+    @patch('app.requests.get')
     def test_search_success(self, mock_get):
         mock_get.return_value.status_code = 200
         mock_get.return_value.json.return_value = {
@@ -45,13 +45,13 @@ class TestFlaskApp(unittest.TestCase):
         self.assertIn(b'dummy_track', response.data)
         self.assertIn(b'dummy_url', response.data)
 
-    @patch('app.py.requests.get')
+    @patch('app.requests.get')
     def test_search_no_query(self, mock_get):
         response = self.app.post('/search', data={'query': ''})
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'Proszę wprowadzić zapytanie.', response.data)
 
-    @patch('app.py.requests.get')
+    @patch('app.requests.get')
     def test_search_failure(self, mock_get):
         mock_get.return_value.status_code = 500
         
