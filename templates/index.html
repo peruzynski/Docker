@@ -1,49 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Spotify Search</title>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-      }
-      .container {
-        max-width: 800px;
-        margin: 0 auto;
-      }
-      form {
-        margin-bottom: 20px;
-      }
-      ul {
-        list-style-type: none;
-        padding: 0;
-      }
-      li {
-        margin-bottom: 10px;
-      }
-      .footer {
-        margin-top: 50px;
-      }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Szerokość kafelków zwiększona */
+            grid-gap: 20px;
+        }
+
+        .track-card {
+            background-color: #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        .track-name {
+            font-weight: bold;
+            color: #1db954;
+            margin-bottom: 10px;
+        }
+
+        .artist-name, .album-name, .release-year, .track-duration {
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+        }
+
+        /* Stylizacja tabeli na lata 80 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #000;
+        }
+
+        th, td {
+            border: 1px solid #000;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #000;
+            color: #fff;
+            text-align: left;
+        }
+
+        td {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Zielony przycisk szukania */
+        #search-button {
+            background-color: #1db954;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Obrazek miniatury */
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <div class="container">
-      <h1>Wyszukiwanie utworów w Spotify</h1>
-      <form action="/search" method="post">
-        <label for="query">Wyszukaj utwór:</label>
-        <input type="text" id="query" name="query" />
-        <button type="submit">Szukaj</button>
-      </form>
-      {% if error %}
-      <p style="color: red">{{ error }}</p>
-      {% endif %}
-      <h2>Znalezione utwory:</h2>
-      <ul>
-        {% for track in tracks %}
-        <li>{{ track.name }} - {{ track.artists[0].name }}</li>
-        {% endfor %}
-      </ul>
+        <h1>Wyszukiwanie utworów w Spotify</h1>
+        <form action="/search" method="post">
+            <label for="query">Wyszukaj utwór:</label>
+            <input type="text" id="query" name="query" />
+            <button id="search-button" type="submit">Szukaj</button>
+        </form>
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+        <h2>Znalezione utwory:</h2>
+        <div class="grid-container">
+            {% for track in tracks %}
+            <div class="track-card">
+                <span class="track-name">{{ track.name }}</span>
+                <p class="artist-name">Artysta: {{ track.artists[0].name }}</p>
+                <p class="album-name">Album: {{ track.album.name }}</p>
+                <p class="release-year">Rok wydania: {{ track.album.release_date.split('-')[0] }}</p>
+                <p class="track-duration">Długość utworu: {{ (track.duration_ms / 60000) | round(2) }} minut</p>
+                <img class="thumbnail" src="{{ track.album.images[0].url }}" alt="Miniatura">
+            </div>
+            {% endfor %}
+        </div>
     </div>
-  </body>
+</body>
 </html>
